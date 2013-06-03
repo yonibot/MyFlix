@@ -7,6 +7,7 @@ describe Video do
       description: 'A really fun show about great stuff!',
       small_cover_url: 'funshow_small.jpg',
       large_cover_url: 'funshow_large.jpg')
+    video.save
     expect(video).to be_valid
   end
 
