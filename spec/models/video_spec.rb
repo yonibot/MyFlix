@@ -17,4 +17,15 @@ describe Video do
     expect(category.videos.first.category_id).to eq 1
   end
 
+  it "is invalid without a title" do
+    v = Video.create(title: nil)
+    expect(v).to have(1).errors_on(:title)
+  end
+
+  it "is invalid without a description" do
+    v = Video.create(description: nil)
+    expect(v).to have(1).errors_on(:description)
+  end
+
+
 end
