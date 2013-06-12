@@ -7,7 +7,34 @@ describe Video do
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:description) }
 
+  describe 'Search feature' do
+    it "returns an empty array if there is no match"
 
+
+
+
+    it "fails to find any videos" do
+      Video.create(title: "Curb your enthusiasm", description: "a funny show!")
+      searchQuery = Video.search_by_title("family")
+      expect(searchQuery.blank?).to be_true
+    end
+
+    it "finds a single video" do
+      Video.create(title: "Curb your enthusiasm", description: "great show!")
+      Video.create(title: "south Park", description: "animated comedy")
+      searchQuery = Video.search_by_title("curb")
+      expect(searchQuery).to eq(["Curb your enthusiasm"])
+    end
+
+    it "finds multiple videos" do
+      Video.create(title: "Curb your enthusiasm", description: "great show!")
+      Video.create(title: "south Park", description: "animated comedy")
+      Video.create(title: "simpsons", description: "another animated!")
+      Video.create(title: "southern walls", description: "made-up show")
+      searchQuery = Video.search_by_title("south")
+      expect(searchQuery).to eq(["south Park", "southern walls"])
+    end
+  end
 
 
 
@@ -18,35 +45,30 @@ describe Video do
   #     small_cover_url: 'funshow_small.jpg',
   #     large_cover_url: 'funshow_large.jpg')
   #   video.save
-  #   Video.first.title.should == 'The Fun Show'
+  #   expect(Video.first).to eq(video)
+  # end
+
+  # it "belongs to a category" do
+  #   comedy = Category.create(name: "Comedy")
+  #   curb = Video.create(title: "Curb Your Enthusiasm", category: comedy)
+  #   expect(curb.category).to eq(comedy)
+  # end
+
+  # test validations
+
+  # it "does not save a video without a title" do
+  #   video = Video.create(description: "a great video!")
+  #   # video should not be saved
+  #   expect(Video.count).to eq(0)
+  # end
+
+  # it "does not save a video without a description" do
+  #   video = Video.create(title: "monk")
+  #   expect(Video.count).to eq(0)
   # end
 
 
-  # it "is valid with a title, description, small_cover_url and large_cover_url" do
-  #   video = Video.new(
-  #     title: 'The Fun Show',
-  #     description: 'A really fun show about great stuff!',
-  #     small_cover_url: 'funshow_small.jpg',
-  #     large_cover_url: 'funshow_large.jpg')
-  #   expect(video).to be_valid
-  # end
 
-  # it "can belong to a category" do
-  #   category = Category.create(name: "Comedy")
-  #   video = Video.create(title: "Curb Your Enthusiasm")
-  #   category.videos << video
-  #   expect(category.videos.first.category_id).to eq 1
-  # end
-
-  # it "is invalid without a title" do
-  #   v = Video.new(title: nil)
-  #   expect(v).to have(1).errors_on(:title)
-  # end
-
-  # it "is invalid without a description" do
-  #   v = Video.new(description: nil)
-  #   expect(v).to have(1).errors_on(:description)
-  # end
 
 
 end
