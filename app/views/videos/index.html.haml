@@ -1,5 +1,8 @@
-%article
-  .video.span2
-    - @results.each do |result|
-      = link_to result do
-        %img(src="/tmp/#{result.small_cover_url}")
+- @categories.each do |category|
+  %header
+    %h3= category.name
+  .videos.row
+    - category.recent_videos.each do |video|
+      .videos.span2
+        = link_to video do
+          %img(src="#{video.small_cover_url}")

@@ -29,9 +29,13 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.4)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
+    bootstrap_form (0.3.2)
     builder (3.0.4)
     capybara (2.0.3)
       mime-types (>= 1.16)
@@ -167,7 +171,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
+  bcrypt-ruby
   bootstrap-sass
+  bootstrap_form
   capybara (~> 2.0.2)
   coffee-rails (~> 3.2.1)
   database_cleaner (~> 0.9.1)

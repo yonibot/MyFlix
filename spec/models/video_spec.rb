@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id              :integer          not null, primary key
+#  title           :string(255)
+#  description     :string(255)
+#  large_cover_url :string(255)
+#  small_cover_url :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  category_id     :integer
+#  user_id         :integer
+#
+
 require 'spec_helper'
 
 describe Video do
@@ -6,7 +21,7 @@ describe Video do
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:description) }
 
-  describe 'Search feature' do
+  describe 'search_by_title' do
     it "returns a blank array if there is no match" do
       Video.create(title: "Curb your enthusiasm", description: "Hilarious show")
       expect(Video.search_by_title("Futurama")).to eq([])
