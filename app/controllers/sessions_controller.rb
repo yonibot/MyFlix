@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
   def create
@@ -16,12 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if session[:user_id] != nil
       session[:user_id] = nil
       redirect_to root_path, notice: "You are signed out."
-    else
-      redirect_to root_path, notice: "You are not signed in."
-    end
   end
 
 end

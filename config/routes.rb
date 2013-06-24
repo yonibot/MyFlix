@@ -7,13 +7,13 @@ Myflix::Application.routes.draw do
     collection do
       post :search, to: "videos#search"
     end
+    resources :reviews, only: [:show, :create]
   end
   get 'home', to: 'videos#index'
 
-
   resources :categories, only: [:show]
 
-  resources :users, only: [:index, :show, :create]
+  resources :users, only: [:create]
   get 'register', to: 'users#new'
   
   resources :sessions, only: [:create]

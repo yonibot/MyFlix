@@ -11,6 +11,7 @@
 
 class User < ActiveRecord::Base
   has_many :videos
+  has_many :reviews
   has_secure_password
 
   validates :full_name, :password, :email_confirmation, presence: true
