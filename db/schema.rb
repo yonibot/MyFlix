@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(:version => 20130623121916) do
   create_table "reviews", :force => true do |t|
     t.integer  "user_id"
     t.integer  "video_id"
-    t.text     "body"
+    t.integer  "rating"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

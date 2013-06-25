@@ -11,12 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class Review < ActiveRecord::Base
-  belongs_to :video
-  belongs_to :user
-
-  
-
-
-
+Fabricator(:review) do
+  rating { (1..5).to_a.sample } #comes out as random number from 1-5
+  content { Faker::Lorem.paragraph(3) }
 end
