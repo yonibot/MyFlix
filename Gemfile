@@ -7,6 +7,7 @@ gem 'bcrypt-ruby'
 gem 'annotate'
 gem 'bootstrap_form'
 gem 'fabrication'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -18,6 +19,7 @@ group :development do
   gem 'sqlite3'
   gem 'pry'
   gem 'pry-nav'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

@@ -8,13 +8,6 @@
 #  updated_at :datetime         not null
 #
 
-class Category < ActiveRecord::Base
-  has_many :videos, order: "created_at DESC"
-  validates_presence_of :name
-
-  def recent_videos
-    videos.first(6)
-  end
-
-
+Fabricator(:category) do 
+  name { Faker::Lorem.words(1) } 
 end

@@ -12,10 +12,13 @@
 class User < ActiveRecord::Base
   has_many :videos
   has_many :reviews
+  has_many :queue_items
   has_secure_password
 
-  validates :full_name, :password, :email_confirmation, presence: true
-  validates :email, presence: true, confirmation: true, uniqueness: true
+  validates_presence_of :full_name, :password, :email
+
+  # validates :full_name, :password, :email_confirmation, presence: true
+  # validates :email, presence: true, confirmation: true, uniqueness: true
   # validates_uniqueness_of :email
 
 end
