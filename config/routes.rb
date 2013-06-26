@@ -12,6 +12,7 @@ Myflix::Application.routes.draw do
   get 'home', to: 'videos#index'
 
   resources :categories, only: [:show]
+  resources :queue_items, only: [:create, :destroy]
 
   resources :users, only: [:create]
   get 'register', to: 'users#new'

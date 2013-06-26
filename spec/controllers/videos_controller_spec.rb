@@ -27,6 +27,8 @@ describe VideosController do
       expect(response).to redirect_to login_path
     end
 
+
+r
     # # Unnecessary since it tests rails functionality
     # it "renders the show template" do
     #   session[:user_id] = Fabricate(:user).id 
@@ -50,17 +52,6 @@ describe VideosController do
       expect(response).to redirect_to login_path
     end
   end
-
-
-  describe ""
-
-
-
-
-
-
-
-
 
 
 
