@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
   validates_presence_of :full_name, :password, :email
   validates_uniqueness_of :email
 
-  # validates :full_name, :password, :email_confirmation, presence: true
-  # validates :email, presence: true, confirmation: true, uniqueness: true
-  # validates_uniqueness_of :email
-
+    def normalize_queue_item_positions
+      queue_items.each_with_index do |queue_item, index|
+        queue_item.update_attributes(position: index+1)
+      end
+    end
 end
