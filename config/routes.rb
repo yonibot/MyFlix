@@ -22,5 +22,6 @@ Myflix::Application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   get 'my_queue', to: 'queue_items#index'
+  post 'update_queue', to: 'queue_items#update_queue'
 
 end

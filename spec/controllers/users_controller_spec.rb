@@ -16,21 +16,21 @@ describe UsersController do
         expect(User.count).to eq(1)
       end
       it "redirects to home page" do
-        post :create, user: { email: "kevin@example.com", email_confirmation: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
         expect(response).to redirect_to home_path
       end
     end
-    context "without invalid info" do
+    context "with invalid info" do
       it "does not create the user" do
-        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        post :create, user: { email: "kevin@example.com", full_name: "Kevin Wang" }
         expect(User.count).to eq(0)
       end
       it "renders the new user template" do
-        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        post :create, user: { email: "kevin@example.com", full_name: "Kevin Wang" }
         expect(response).to render_template :new
       end
       it "sets @user" do
-        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        post :create, user: { email: "kevin@example.com", full_name: "Kevin Wang" }
         expect(assigns(:user)).to be_instance_of(User)
       end
     end
