@@ -5,9 +5,7 @@ describe QueueItemsController do
   describe "GET index" do
     it "sets @queue_items to the queue items of the logged-in user" do
       alice = Fabricate(:user)
-      #let's make sure alice is logged in
       session[:user_id] = alice.id
-      # let's make queue items that belong to the user
       queue_item1 = Fabricate(:queue_item, user: alice)
       queue_item2 = Fabricate(:queue_item, user: alice)
       get :index
@@ -23,19 +21,19 @@ describe QueueItemsController do
   describe "POST create" do
     it "redirects to my queue page" do
       #setup, action, verify
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       curb = Fabricate(:video)
       post :create, video_id: curb.id
       expect(response).to redirect_to my_queue_path
     end
     it "creates a queue item" do
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       curb = Fabricate(:video)
       post :create, video_id: curb
       expect(QueueItem.count).to eq(1)
     end
     it "creates the queue item that is associated with the video" do
-      session[:user_id] = Fabricate(:user).id
+      set_current_user
       curb = Fabricate(:video)
       post :create, video_id: curb
       expect(QueueItem.first.video).to eq(curb)

@@ -31,7 +31,6 @@ class QueueItemsController < ApplicationController
 
 
 
-
   private
 
   def queue_video(video)
