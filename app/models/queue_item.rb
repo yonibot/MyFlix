@@ -30,11 +30,6 @@ class QueueItem < ActiveRecord::Base
     review.rating if review
   end
 
-  # opposite of def rating. 
-  # push the value from the queueitem to the review model. Treat the rating
-  # as if its an attrib of the review model. 
-  # This is called "virtual attributes" for activerecord models.
-
   def rating=(new_rating)
    if review
       review.update_column(:rating, new_rating)
