@@ -49,6 +49,10 @@ class QueueItem < ActiveRecord::Base
     category.name
   end
 
+  def display_my_queue_button
+    link_to "+ My Queue", queue_items_path(video_id: @video.id), method: :post, class: 'btn'
+  end
+
   private
 
   def review

@@ -9,6 +9,7 @@
           %span Rating: 4.5/5.0
         %p= @video.description
         .actions
+        - if QueueItem.where(video_id: @video.id).blank?
           = link_to "+ My Queue", queue_items_path(video_id: @video.id), method: :post, class: 'btn'
 
 %section.reviews.container

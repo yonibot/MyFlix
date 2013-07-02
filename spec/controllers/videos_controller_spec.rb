@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe VideosController do
+  
   describe "GET show" do
     it "sets @video for authenticated users" do
       session[:user_id] = Fabricate(:user).id 
@@ -15,9 +16,6 @@ describe VideosController do
       review1 = Fabricate(:review, video: video)
       review2 = Fabricate(:review, video: video)
       get :show, id: video.id
-
-      # testing for an array match without specific order
-
       expect(assigns(:reviews)).to match_array([review1, review2])
     end
 
@@ -27,15 +25,6 @@ describe VideosController do
       expect(response).to redirect_to login_path
     end
 
-
-
-    # # Unnecessary since it tests rails functionality
-    # it "renders the show template" do
-    #   session[:user_id] = Fabricate(:user).id 
-    #   video = Fabricate(:video)
-    #   get :show, id: video.id
-    #   expect(response).to render_template :show
-    # end
   end
 
   describe "POST search" do
