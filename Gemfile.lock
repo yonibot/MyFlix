@@ -184,7 +184,7 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass
   bootstrap_form
-  capybara (~> 2.0.2)
+  capybara
   coffee-rails (~> 3.2.1)
   database_cleaner (~> 0.9.1)
   fabrication
