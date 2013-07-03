@@ -40,18 +40,10 @@ class QueueItem < ActiveRecord::Base
   end
 
 
-    # we can get rid of video.category method cause of delegation
-    # def category_name
-    #   video.category.name
-    # end
-
   def category_name
     category.name
   end
 
-  def display_my_queue_button
-    link_to "+ My Queue", queue_items_path(video_id: @video.id), method: :post, class: 'btn'
-  end
 
   private
 
