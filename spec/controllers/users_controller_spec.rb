@@ -8,6 +8,17 @@ describe UsersController do
     end
   end
 
+  decribe "GET show" do
+    it "sets the @user variable" do
+      
+    end
+    it "displays all of the user's videos"
+    it "displays all of the user's reviews"
+    it "displays the number of reviews"
+    it "displays the number of videos in the user's collection"
+    it "renders login template if user is not signed in"
+  end
+
   describe "POST create" do
     context "with valid info" do
       it "creates the user" do
