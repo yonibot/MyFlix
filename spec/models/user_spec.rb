@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  full_name       :string(255)
+#  password        :string(255)
+#  password_digest :string(255)
+#  email           :string(255)
+#
+
 require 'spec_helper'
 
 describe User do
@@ -6,6 +17,7 @@ describe User do
   it { should validate_presence_of(:full_name)}
   it { should validate_uniqueness_of(:email)}
   it { should have_many(:queue_items).order(:position)}
+  it { should have_many(:reviews).order("created_at DESC")}
 
 
   describe "#queued_video?" do
