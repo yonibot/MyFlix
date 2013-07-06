@@ -8,6 +8,23 @@ describe UsersController do
     end
   end
 
+  describe "GET show" do
+    it_behaves_like "requires sign in" do
+      let(:action) { get :show, id: 3}
+    end
+    it "sets the @user variable" do
+      set_current_user
+      alice = Fabricate(:user)
+      get :show, id: alice.id
+      expect(assigns(:user)).to eq(alice)
+    end
+    it "displays all of the user's videos"
+    it "displays all of the user's reviews"
+    it "displays the number of reviews"
+    it "displays the number of videos in the user's collection"
+    it "renders login template if user is not signed in"
+  end
+
   describe "POST create" do
     context "with valid info" do
       it "creates the user" do

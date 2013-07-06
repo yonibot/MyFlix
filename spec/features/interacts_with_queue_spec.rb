@@ -9,23 +9,11 @@ feature 'User interacts with the queue' do
     family_guy = Fabricate(:video, title: "Family Guy", category: comedy)
     login
     
-    find("a[href='/videos/#{curb.id}']").click
-    expect(page).to have_content(curb.title)
-    
-    click_link("+ My Queue")
-    expect(page).to have_content(curb.title)
-
+    add_video_to_queue(curb)
     visit video_path(curb)
     expect(page).to_not have_content("+ My Queue")
 
-    visit home_path
-    find("a[href='/videos/#{south_park.id}']").click
-    expect(page).to have_content(south_park.title)
-
-    click_link("+ My Queue")
-    expect(page).to have_content(curb.title)
-    expect(page).to have_content(south_park.title)
-
+    add_video_to_queue(south_park)
     visit video_path(south_park)
     expect(page).to_not have_content("+ My Queue")
 
@@ -62,4 +50,13 @@ feature 'User interacts with the queue' do
 
 
   end
+
+  def add_video_to_queue(video)
+    visit home_path
+    click_on_video_on_home_page(video)
+    click_link("+ My Queue")
+  end
+
 end
+
+
