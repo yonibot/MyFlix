@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
+      MyflixMailer.notify_on_registration(current_user).deliver
       redirect_to home_path
     else
       render :new
