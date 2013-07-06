@@ -26,6 +26,7 @@ describe UsersController do
   end
 
   describe "POST create" do
+
     context "with valid info" do
       it "creates the user" do
         # post :create, user: { email: "kevin@example.com", email_confirmation: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
@@ -37,6 +38,7 @@ describe UsersController do
         expect(response).to redirect_to home_path
       end
     end
+
     context "with invalid info" do
       it "does not create the user" do
         post :create, user: { email: "kevin@example.com", full_name: "Kevin Wang" }
@@ -51,5 +53,35 @@ describe UsersController do
         expect(assigns(:user)).to be_instance_of(User)
       end
     end
+
+    context "sending emails" do
+
+      after { ActionMailer::Base.deliveries.clear }
+
+      it "sends email to the user with valid input" do
+        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        expect(ActionMailer::Base.deliveries.last.to).to eq(['kevin@example.com'])
+      end
+      
+      it "sends out email containing the user's name with valid input" do
+        post :create, user: { email: "kevin@example.com", password: "password", full_name: "Kevin Wang" }
+        expect(ActionMailer::Base.deliveries.last.body).to include("Kevin Wang")
+      end
+ 
+      it "does not send out email with invalid input" do
+        post :create, user: { email: "kevin@example.com", full_name: "Kevin Wang" }
+        expect(ActionMailer::Base.deliveries.count).to eq(0)
+      end
+    end
+
   end
 end
+
+
+
+
+
+
+
+
+
