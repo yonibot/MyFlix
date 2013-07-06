@@ -10,4 +10,10 @@ class RelationshipsController < ApplicationController
     relationship.destroy if relationship.follower == current_user
     redirect_to people_path
   end
+
+  def create
+    leader = User.find(params[:leader_id])
+    Relationship.create(follower: current_user, leader_id: params[:leader_id]) if current_user.can_follow?(leader)
+    redirect_to people_path
+  end
 end
