@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
 
-  # def front
-  # end
-
+  def send_token
+    @email = params[:email]
+  end
 
 
 
