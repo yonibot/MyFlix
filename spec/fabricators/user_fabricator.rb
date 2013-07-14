@@ -7,6 +7,7 @@
 #  password        :string(255)
 #  password_digest :string(255)
 #  email           :string(255)
+#  token           :string(255)
 #
 
 Fabricator(:user) do

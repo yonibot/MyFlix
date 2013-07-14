@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature 'User resets password using a token' do
-  scenario 'User submits password in Forgot Email page and resets password' do
+feature 'User resets password' do
+  scenario 'User successfully resets the password using an email token' do
     clear_emails
 
     alice = Fabricate(:user, email: "alice@example.com", password: "foobarbaz")
