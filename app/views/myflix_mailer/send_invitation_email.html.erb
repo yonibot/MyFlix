@@ -1,0 +1,5 @@
+<p>You're invited by <%= @invitation.inviter.full_name %> to join Myflix!</p>
+
+<p> <%= @invitation.message %> </p>
+
+<p> <%= link_to "Accept this invitation", register_with_token_url(@invitation.token) %> </p>
