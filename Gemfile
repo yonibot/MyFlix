@@ -7,8 +7,10 @@ gem 'bcrypt-ruby'
 gem 'annotate'
 gem 'bootstrap_form'
 gem 'fabrication'
-gem 'thin'
+# gem 'thin'
 gem "capybara-email"
+gem 'sidekiq'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -10,8 +10,6 @@
 #  token           :string(255)
 #
 
-require_relative '../../lib/tokenable'
-
 class User < ActiveRecord::Base
   has_many :videos
   has_many :reviews, order: "created_at DESC"
