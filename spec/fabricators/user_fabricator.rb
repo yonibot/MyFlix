@@ -8,6 +8,7 @@
 #  password_digest :string(255)
 #  email           :string(255)
 #  token           :string(255)
+#  admin           :boolean
 #
 
 Fabricator(:user) do
