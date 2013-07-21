@@ -13,6 +13,7 @@ gem 'sidekiq'
 gem 'unicorn'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem 'mini_magick'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
