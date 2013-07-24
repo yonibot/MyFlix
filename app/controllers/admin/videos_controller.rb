@@ -1,7 +1,7 @@
 class Admin::VideosController < AdminsController
 
   include ActionView::Helpers::TextHelper
-  
+
   def new
     @video = Video.new
   end
@@ -9,7 +9,6 @@ class Admin::VideosController < AdminsController
   def create
 
     video = Video.create(params[:video])
-    binding.pry
     if video.save
       flash[:success] = "You have successfully added the video #{video.title}."
       redirect_to new_admin_video_path
