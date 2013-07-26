@@ -7,8 +7,7 @@ class Admin::VideosController < AdminsController
   end
 
   def create
-
-    video = Video.create(params[:video])
+    video = Video.new(params[:video])
     if video.save
       flash[:success] = "You have successfully added the video #{video.title}."
       redirect_to new_admin_video_path
@@ -16,15 +15,5 @@ class Admin::VideosController < AdminsController
       flash[:error] = "#{pluralize(video.errors.count, "error")} occured in uploading this video."
       render :new
     end
-
-    # @video = Video.new(params[:video])
-    # uploader = LargeCoverUrlUploader.new
-    # uploader.store!(params[:video][:large_cover_url])
-    # if @video.save
-    #   redirect_to home_path
-    # else
-    #   flash[:error] = "New video upload has failed."
-    #   render :new
-    # end
   end
 end
