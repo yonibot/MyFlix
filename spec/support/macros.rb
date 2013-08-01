@@ -1,8 +1,11 @@
 # for unit tests:
 
-def set_current_user(user=nil)
-  session[:user_id] = (user || Fabricate(:user)).id
+def set_current_user(admin=nil)
+  session[:user_id] = (admin || Fabricate(:admin)).id
 end
+
+def set_current_admin(user=nil)
+  session[:user_]
 
 # for feature spec:
 

@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
 
+  def ensure_admin
+    redirect_to root_path unless current_user.admin?
+  end
+
 
 end
