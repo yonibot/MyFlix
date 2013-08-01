@@ -7,12 +7,12 @@ class Admin::VideosController < AdminsController
   end
 
   def create
-    video = Video.new(params[:video])
-    if video.save
-      flash[:success] = "You have successfully added the video #{video.title}."
+    @video = Video.new(params[:video])
+    if @video.save
+      flash[:success] = "You have successfully added the video #{@video.title}."
       redirect_to new_admin_video_path
     else
-      flash[:error] = "#{pluralize(video.errors.count, "error")} occured in uploading this video."
+      flash[:error] = "#{pluralize(@video.errors.count, "error")} occured in uploading this video."
       render :new
     end
   end
