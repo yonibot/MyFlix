@@ -53,6 +53,8 @@ Myflix::Application.routes.draw do
 
   resources :invitations, only: [:new, :create]
 
+  resources :payments, only: [:create]
+
 end
 
 
