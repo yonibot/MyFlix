@@ -42,6 +42,8 @@ group :test do
   gem "database_cleaner", "~> 0.9.1"
   gem "launchy", "~> 2.2.0"
   gem "shoulda-matchers"
+  gem 'vcr'
+  gem 'webmock', '1.11.0'
 end
 
 group :production do
