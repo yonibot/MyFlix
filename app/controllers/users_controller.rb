@@ -18,18 +18,23 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    handle_invitation
-    charge = StripeWrapper::Charge.new(
+    if @user.valid?
+      charge = StripeWrapper::Charge.create(
       :amount => 999,
       :card => params[:stripeToken],
       :description => "Sign-up charge for #{@user.email}")
-    if charge.successful? && @user.save?
-      flash[:success] = "Thanks for signing up!"
-      session[:user_id] = @user.id
-      MyflixMailer.notify_on_registration(@user).deliver
-      redirect_to home_path
+      if charge.successful?
+        @user.save
+        flash[:success] = "Thanks for signing up!"
+        session[:user_id] = @user.id
+        handle_invitation
+        MyflixMailer.notify_on_registration(@user).deliver
+        redirect_to home_path
+      else
+        flash[:error] = charge.error_message
+        render :new
+      end
     else
-      flash[:error] = charge.error_message
       render :new
     end
   end
