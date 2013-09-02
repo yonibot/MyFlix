@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "User invites friend" do
-  scenario "User successfully invites friend and invitation is accepted" do
+  scenario "User successfully invites friend and invitation is accepted", { js: true, vcr: true } do
 
     clear_email
 
@@ -30,6 +30,10 @@ feature "User invites friend" do
     expect(find_field("Email address").value).to eq("richard@example.com")
     fill_in "Password", with: "foobarbaz"
     fill_in "Full Name", with: "Richard Simmons"
+    fill_in "Credit Card Number", with: "4242424242424242"
+    fill_in "Security Code", with: "123"
+    select "7 - July", from: "date_month"
+    select "2015", from: "date_year"
     click_on "Sign Up"
   end
 

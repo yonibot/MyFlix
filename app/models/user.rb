@@ -20,8 +20,9 @@ class User < ActiveRecord::Base
   has_secure_password
 
   include Tokenable
-
-  validates_presence_of :full_name, :password, :email
+  validates_presence_of :password, on: :create
+  validates_presence_of :password_digest, on: :create
+  validates_presence_of :full_name, :email
   validates_uniqueness_of :email
 
 

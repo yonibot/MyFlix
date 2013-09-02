@@ -16,6 +16,7 @@ gem "fog", "~> 1.3.1"
 gem 'mini_magick'
 gem 'figaro'
 gem 'stripe'
+gem 'jquery-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -39,13 +40,18 @@ end
 group :test do
   gem "faker", "~> 1.1.2"
   gem "capybara"
-  gem "database_cleaner", "~> 0.9.1"
+  gem "database_cleaner"
   gem "launchy", "~> 2.2.0"
   gem "shoulda-matchers"
+  gem 'vcr'
+  gem 'webmock', '1.11.0'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'poltergeist'
 end
 
 group :production do
   gem 'pg'
 end
 
-gem 'jquery-rails'
+

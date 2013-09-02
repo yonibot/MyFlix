@@ -10,7 +10,6 @@ describe Admin::VideosController do
     it "sets the @video to a new video" do
       set_current_admin
       get :new
-      require 'pry'; binding.pry
       expect(assigns(:video)).to be_instance_of(Video)
       expect(assigns(:video)).to be_new_record
     end
