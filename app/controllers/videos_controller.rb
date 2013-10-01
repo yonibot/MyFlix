@@ -8,7 +8,7 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
+    @video = VideoDecorator.decorate(Video.find(params[:id]))
     @reviews = @video.reviews
     @average_rating = find_rating_average(@video.reviews.map(&:rating))
   end

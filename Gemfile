@@ -17,6 +17,7 @@ gem 'mini_magick'
 gem 'figaro'
 gem 'stripe'
 gem 'jquery-rails'
+gem 'draper', '~> 1.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
