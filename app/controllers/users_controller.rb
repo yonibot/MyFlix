@@ -18,23 +18,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.valid?
-      charge = StripeWrapper::Charge.create(
-      :amount => 999,
-      :card => params[:stripeToken],
-      :description => "Sign-up charge for #{@user.email}")
-      if charge.successful?
-        @user.save
-        flash[:success] = "Thanks for signing up!"
-        session[:user_id] = @user.id
-        handle_invitation
-        MyflixMailer.notify_on_registration(@user).deliver
-        redirect_to home_path
-      else
-        flash[:error] = charge.error_message
-        render :new
-      end
+    result = UserSignup.new(@user).sign_up(params[:stripeToken], params[:invitation_token])
+    
+    if result.successful?
+      flash[:success] = "Thank you for registering. You will now be signed in."
+      session[:user_id] = @user.id
+      redirect_to home_path
     else
+      flash[:error] = result.error_message
       render :new
     end
   end
@@ -42,17 +33,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @reviews = @user.reviews
-  end
-
-  private
-
-  def handle_invitation
-    if params[:invitation_token].present?
-      invitation = Invitation.where(token: params[:invitation_token]).first
-      @user.follow(invitation.inviter)
-      invitation.inviter.follow(@user)
-      invitation.update_column(:token, nil)
-    end
   end
 
 end

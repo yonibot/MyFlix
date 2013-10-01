@@ -14,7 +14,7 @@ feature 'User registers', js: true, vcr: true do
     click_button "Sign Up"
     sleep 5
 
-    expect(page).to have_content("Thanks for signing up!")
+    expect(page).to have_content("Thank you")
 
   end
   scenario 'with valid user info and invalid card'
