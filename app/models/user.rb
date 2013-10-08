@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :leading_relationships, class_name: "Relationship", foreign_key: :leader_id
   has_secure_password
+  has_many :payments
 
   include Tokenable
   validates_presence_of :password, on: :create
