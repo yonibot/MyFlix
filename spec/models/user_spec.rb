@@ -9,6 +9,7 @@
 #  email           :string(255)
 #  token           :string(255)
 #  admin           :boolean
+#  customer_token  :string(255)
 #
 
 require 'spec_helper'

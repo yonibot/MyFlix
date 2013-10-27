@@ -1,0 +1,139 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4242424242424242&card[exp_month]=6&card[exp_year]=2018&card[cvc]=314
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_vHVA81mPc6q71Tpg7bl5Nhoe
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin12.3.0","publisher":"stripe","uname":"Darwin
+        MacbookAir.local 12.5.0 Darwin Kernel Version 12.5.0: Sun Sep 29 13:33:47
+        PDT 2013; root:xnu-2050.48.12~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '81'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 20 Oct 2013 10:15:47 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '550'
+      Connection:
+      - keep-alive
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"id\": \"tok_2mt1OqBRAISZHb\",\n  \"livemode\": false,\n  \"created\":
+        1382264146,\n  \"used\": false,\n  \"object\": \"token\",\n  \"type\": \"card\",\n
+        \ \"card\": {\n    \"id\": \"card_2mt1IBeDxnYphE\",\n    \"object\": \"card\",\n
+        \   \"last4\": \"4242\",\n    \"type\": \"Visa\",\n    \"exp_month\": 6,\n
+        \   \"exp_year\": 2018,\n    \"fingerprint\": \"KniHAbbP8edNQ7pX\",\n    \"customer\":
+        null,\n    \"country\": \"US\",\n    \"name\": null,\n    \"address_line1\":
+        null,\n    \"address_line2\": null,\n    \"address_city\": null,\n    \"address_state\":
+        null,\n    \"address_zip\": null,\n    \"address_country\": null\n  }\n}\n"
+    http_version: 
+  recorded_at: Sun, 20 Oct 2013 10:15:49 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: card=tok_2mt1OqBRAISZHb&email=pierce.ankunding%40jacobsabbott.org&plan=base
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_vHVA81mPc6q71Tpg7bl5Nhoe
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin12.3.0","publisher":"stripe","uname":"Darwin
+        MacbookAir.local 12.5.0 Darwin Kernel Version 12.5.0: Sun Sep 29 13:33:47
+        PDT 2013; root:xnu-2050.48.12~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '75'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 20 Oct 2013 10:15:50 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1713'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Access-Control-Max-Age:
+      - '300'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"object\": \"customer\",\n  \"created\": 1382264149,\n  \"id\":
+        \"cus_2mt1Rch5GJNpKG\",\n  \"livemode\": false,\n  \"description\": null,\n
+        \ \"email\": \"pierce.ankunding@jacobsabbott.org\",\n  \"delinquent\": false,\n
+        \ \"metadata\": {},\n  \"subscription\": {\n    \"id\": \"su_2mt1saHWlMVg8Z\",\n
+        \   \"plan\": {\n      \"interval\": \"month\",\n      \"name\": \"the base
+        plan\",\n      \"amount\": 999,\n      \"currency\": \"usd\",\n      \"id\":
+        \"base\",\n      \"object\": \"plan\",\n      \"livemode\": false,\n      \"interval_count\":
+        1,\n      \"trial_period_days\": null\n    },\n    \"object\": \"subscription\",\n
+        \   \"start\": 1382264149,\n    \"status\": \"active\",\n    \"customer\":
+        \"cus_2mt1Rch5GJNpKG\",\n    \"cancel_at_period_end\": false,\n    \"current_period_start\":
+        1382264149,\n    \"current_period_end\": 1384942549,\n    \"ended_at\": null,\n
+        \   \"trial_start\": null,\n    \"trial_end\": null,\n    \"canceled_at\":
+        null,\n    \"quantity\": 1,\n    \"application_fee_percent\": null\n  },\n
+        \ \"discount\": null,\n  \"account_balance\": 0,\n  \"cards\": {\n    \"object\":
+        \"list\",\n    \"count\": 1,\n    \"url\": \"/v1/customers/cus_2mt1Rch5GJNpKG/cards\",\n
+        \   \"data\": [\n      {\n        \"id\": \"card_2mt1IBeDxnYphE\",\n        \"object\":
+        \"card\",\n        \"last4\": \"4242\",\n        \"type\": \"Visa\",\n        \"exp_month\":
+        6,\n        \"exp_year\": 2018,\n        \"fingerprint\": \"KniHAbbP8edNQ7pX\",\n
+        \       \"customer\": \"cus_2mt1Rch5GJNpKG\",\n        \"country\": \"US\",\n
+        \       \"name\": null,\n        \"address_line1\": null,\n        \"address_line2\":
+        null,\n        \"address_city\": null,\n        \"address_state\": null,\n
+        \       \"address_zip\": null,\n        \"address_country\": null,\n        \"cvc_check\":
+        \"pass\",\n        \"address_line1_check\": null,\n        \"address_zip_check\":
+        null\n      }\n    ]\n  },\n  \"default_card\": \"card_2mt1IBeDxnYphE\"\n}\n"
+    http_version: 
+  recorded_at: Sun, 20 Oct 2013 10:15:52 GMT
+recorded_with: VCR 2.5.0

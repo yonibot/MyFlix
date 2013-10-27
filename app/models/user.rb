@@ -9,6 +9,7 @@
 #  email           :string(255)
 #  token           :string(255)
 #  admin           :boolean
+#  customer_token  :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -48,6 +49,7 @@ class User < ActiveRecord::Base
   def can_follow?(another_user)
     !(self.follows?(another_user) || self == another_user)
   end
+
 
 
 end

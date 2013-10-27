@@ -56,7 +56,7 @@ Myflix::Application.routes.draw do
 
   resources :payments, only: [:create]
 
-  mount StripeEvent::Engine => '/stripe_webhooks'
+  mount StripeEvent::Engine => '/stripe_events'
 
 
 end
