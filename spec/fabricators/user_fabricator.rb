@@ -17,6 +17,7 @@ Fabricator(:user) do
   password 'password'
   full_name { Faker::Name.name }
   admin false
+  active true
 end
 
 
