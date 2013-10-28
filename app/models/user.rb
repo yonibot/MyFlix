@@ -9,6 +9,7 @@
 #  email           :string(255)
 #  token           :string(255)
 #  admin           :boolean
+#  customer_token  :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :following_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :leading_relationships, class_name: "Relationship", foreign_key: :leader_id
   has_secure_password
+  has_many :payments
 
   include Tokenable
   validates_presence_of :password, on: :create
@@ -47,6 +49,11 @@ class User < ActiveRecord::Base
   def can_follow?(another_user)
     !(self.follows?(another_user) || self == another_user)
   end
+
+  def deactivate!
+    update_column(:active, false)
+  end
+
 
 
 end

@@ -226,6 +226,9 @@ GEM
     stripe (1.8.4)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
+    stripe_event (0.6.1)
+      rails (>= 3.1)
+      stripe (~> 1.6)
     subexec (0.2.3)
     thin (1.5.1)
       daemons (>= 1.0.9)
@@ -291,6 +294,7 @@ DEPENDENCIES
   sidekiq
   sqlite3
   stripe
+  stripe_event
   thin
   uglifier (>= 1.0.3)
   unicorn

@@ -9,6 +9,7 @@
 #  email           :string(255)
 #  token           :string(255)
 #  admin           :boolean
+#  customer_token  :string(255)
 #
 
 Fabricator(:user) do
@@ -16,6 +17,7 @@ Fabricator(:user) do
   password 'password'
   full_name { Faker::Name.name }
   admin false
+  active true
 end
 
 

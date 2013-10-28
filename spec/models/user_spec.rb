@@ -9,6 +9,7 @@
 #  email           :string(255)
 #  token           :string(255)
 #  admin           :boolean
+#  customer_token  :string(255)
 #
 
 require 'spec_helper'
@@ -72,7 +73,15 @@ describe User do
       Fabricate(:relationship, leader: alice, follower: bob)
       expect(alice.follows?(bob)).to be_false
     end
-  end  
+  end
+
+  describe "#deactivate!" do
+    it "deactivates an active user" do
+      alice = Fabricate(:user)
+      alice.deactivate!
+      expect(alice).not_to be_active
+    end
+  end
 
 
 end
