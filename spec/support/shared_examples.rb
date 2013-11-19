@@ -1,8 +1,16 @@
-shared_examples "requires sign in" do
+shared_examples "requires authenticated user" do
   it "redirects to the sign in page" do
     session[:user_id] = nil
     action
     expect(response).to redirect_to login_path
+  end
+end
+
+shared_examples "requires admin user" do
+  it "redirects to the home page" do
+    set_current_user
+    action
+    expect(response).to redirect_to home_path
   end
 end
 

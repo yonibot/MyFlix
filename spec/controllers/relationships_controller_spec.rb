@@ -12,7 +12,7 @@ describe RelationshipsController do
       expect(assigns(:relationships)).to eq([relationship])
     end
 
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { get :index }
     end
   end
@@ -46,13 +46,13 @@ describe RelationshipsController do
       expect(Relationship.count).to eq(1)
     end
 
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { delete :destroy, id: 4 }
     end
   end
 
   describe "POST create" do
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { post :create, leader_id: 3} 
     end
 

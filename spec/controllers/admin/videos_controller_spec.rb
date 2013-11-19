@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Admin::VideosController do
   describe "GET new" do
 
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires admin user" do
       let(:action) { get :new }
     end
 

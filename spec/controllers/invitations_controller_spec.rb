@@ -11,13 +11,13 @@ describe InvitationsController do
       expect(assigns(:invitation)).to be_instance_of Invitation
     end
 
-    it_behaves_like "requires sign in"  do
+    it_behaves_like "requires authenticated user"  do
       let(:action) { get :new }
     end
   end
 
   describe "POST create" do
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { post :create }
     end
 

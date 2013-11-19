@@ -12,7 +12,7 @@ describe QueueItemsController do
       expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
     end
     
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { get :index }
     end
   end
@@ -63,7 +63,7 @@ describe QueueItemsController do
       post :create, video_id: monk.id
       expect(alice.queue_items.count).to eq(1)
     end 
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { post :create, video_id: 3 }
     end
   end
@@ -102,14 +102,14 @@ describe QueueItemsController do
       expect(QueueItem.count).to eq(1)
     end  
 
-    it_behaves_like "requires sign in" do
+    it_behaves_like "requires authenticated user" do
       let(:action) { delete :destroy, id: 3 }
     end
   end
 
     describe "POST update_queue" do
 
-      it_behaves_like "requires sign in" do
+      it_behaves_like "requires authenticated user" do
         let(:action) { post :update_queue, queue_items: [{id: 1, position: 3}, {id: 2, position: 2}]
            }
       end
